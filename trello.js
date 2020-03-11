@@ -19,7 +19,7 @@ async function getWillowTreeBoard() {
 }
 
 async function getOverdueCards() {
-  var response = await network.get(baseURL + '/1/lists/'+overduelistid+'/cards')
+  var response = await network.get(baseURL + '1/lists/'+overduelistid+'/cards')
   return response
 }
 exports.getBoards = getBoards;
