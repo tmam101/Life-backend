@@ -13,7 +13,7 @@ async function getBoards() {
 }
 
 async function getWillowTreeBoard() {
-  var response = await network.get('https://api.trello.com/1/boards/' + wtboardid + keyAndToken')
+  var response = await network.get('https://api.trello.com/1/boards/' + wtboardid + keyAndToken)
   return response
 }
 exports.getBoards = getBoards;
