@@ -1,4 +1,4 @@
-var trello = require('trello.js');
+var trello = require('trello');
 async function getBoards() {
   print("started")
   var response = await trello.getBoards()
