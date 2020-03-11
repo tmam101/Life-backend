@@ -12,7 +12,7 @@ async function getWillowTreeBoard() {
 
 async function getOverdueCards() {
   var response = await trello.getOverdueCards()
-  console.log(response)
+  console.log(response.length)
 }
 // getBoards()
 // getWillowTreeBoard()
