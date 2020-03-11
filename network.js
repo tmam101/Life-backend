@@ -10,6 +10,7 @@ async function get(url) {
         data += chunk;
       });
       resp.on('end', () => {
+        console.log(data)
         // Do the actual work
         resolve(JSON.parse(data))
       });
