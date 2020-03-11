@@ -5,4 +5,9 @@ async function getBoards() {
   console.log(response)
   console.log("done")
 }
-getBoards()
+async function getWillowTreeBoard() {
+  var response = await trello.getWillowTreeBoard()
+  console.log(response)
+}
+// getBoards()
+getWillowTreeBoard()
