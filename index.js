@@ -1,19 +1,2 @@
-var trello = require('./trello.js');
-async function getBoards() {
-  console.log("started")
-  var response = await trello.getBoards()
-  console.log(response)
-  console.log("done")
-}
-async function getWillowTreeBoard() {
-  var response = await trello.getWillowTreeBoard()
-  console.log(response)
-}
-
-async function getOverdueCards() {
-  var response = await trello.getOverdueCards()
-  console.log(response.length)
-}
-// getBoards()
-// getWillowTreeBoard()
-getOverdueCards()
+console.log("hey")
+// the issue is its not connected to the right github account! none of the changes I've been making have taken effect. 
