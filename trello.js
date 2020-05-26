@@ -26,7 +26,7 @@ async function markCardDone(id) {
     console.log("Cards done today: " + cardsDoneToday)
     return true
   }
-  console.log("Card " + id " failed to mark done")
+  console.log("Card " + id + " failed to mark done")
   return false
 }
 
