@@ -13,7 +13,12 @@ app.use(bodyParser.urlencoded({
 }));
 app.get('/', async function(request, response) {
   console.log("/")
+  response.json{started: "true"}
+})
+
+app.get('/getDoing', async function(request, response) {
   var cards = await trello.getCardsFromDoing()
   response.json(cards)
 })
-console.log("hey")
+
+//TODO: Handle timeouts
