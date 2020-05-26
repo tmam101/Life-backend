@@ -1,6 +1,7 @@
 var envvar = require('envvar');
 var bodyParser = require('body-parser');
 var express = require('express');
+var trello = require('trello.js')
 var port = process.env.PORT || 5000
 
 var app = express();
@@ -10,8 +11,10 @@ var server = app.listen(port, function() {
 app.use(bodyParser.urlencoded({
   extended: false
 }));
-app.get('/', function(request, response) {
+app.get('/', async function(request, response) {
   console.log("/")
+  var cards = await trello.getCardsFromDoing()
+  console.log(cards)
   response.json({main: "main"})
 })
 console.log("hey")
