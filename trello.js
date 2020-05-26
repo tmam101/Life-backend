@@ -18,11 +18,10 @@ async function getCardsFromDoing() {
 }
 
 async function markCardDone(id) {
-  // TODO
   let putURL = baseTrelloURL + "cards/" + id + "?idList=" + doneListID + "&" + keyAndToken
   let r = await network.put(putURL)
-  // cardsDoneToday += 1
-  console.log(r)
+  cardsDoneToday += 1
+  console.log(r.statusCode)
 }
 
 //MARK: EXPORTS
