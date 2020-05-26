@@ -28,7 +28,6 @@ app.get('/getDoing', async function(request, response) {
 })
 
 app.post('/cardDone', async function(request, response) {
-  //TODO
   console.log(request)
   var id = request.query.id
   console.log(id)
