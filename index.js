@@ -1,7 +1,7 @@
 var envvar = require('envvar');
 var bodyParser = require('body-parser');
 var express = require('express');
-var trello = require('trello.js')
+var trello = require('./trello.js')
 var port = process.env.PORT || 5000
 
 var app = express();
