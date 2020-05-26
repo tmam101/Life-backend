@@ -1,4 +1,5 @@
-const HTTPS     = require('https');
+//MARK: REQUIREMENTS
+const HTTPS = require('https');
 const request = require('request') //TODO: Request is deprecated
 
 //MARK: HTTPS FUNCTIONS
