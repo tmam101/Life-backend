@@ -14,7 +14,6 @@ app.use(bodyParser.urlencoded({
 app.get('/', async function(request, response) {
   console.log("/")
   var cards = await trello.getCardsFromDoing()
-  console.log(cards)
-  response.json({main: "main"})
+  response.json(cards)
 })
 console.log("hey")

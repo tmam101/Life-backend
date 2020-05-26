@@ -1,5 +1,5 @@
 const HTTPS     = require('https');
-const request = require('request')
+const request = require('request') //TODO: Request is deprecated
 
 //MARK: HTTPS FUNCTIONS
 async function get(url) {
