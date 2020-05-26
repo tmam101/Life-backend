@@ -3,10 +3,11 @@ var bodyParser = require('body-parser');
 var trelloKey = envvar.string('trellokey')
 var trelloSecret = envvar.string('trellotoken')
 var express = require('express');
+var port = process.env.PORT || 5000
 
 var app = express();
-var server = app.listen(5000, function() {
-  console.log('server listening on port 5000');
+var server = app.listen(port, function() {
+  console.log('server listening on port ' + port);
 });
 app.use(bodyParser.urlencoded({
   extended: false
