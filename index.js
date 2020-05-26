@@ -8,7 +8,7 @@ var app = express();
 app.use(bodyParser.urlencoded({
   extended: false
 }));
-app.get('/', function(request, response, next) {
+app.get('/', function(request, response) {
   console.log("get")
 })
 console.log("hey")
