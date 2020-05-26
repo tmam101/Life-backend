@@ -26,5 +26,10 @@ app.get('/getDoing', async function(request, response) {
   response.json(cards)
 })
 
+app.post('/cardDone', async function(request, response) {
+  //TODO
+  response.json({done: false})
+})
+
 //TODO: Handle timeouts
 //TODO: Tests
