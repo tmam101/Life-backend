@@ -29,6 +29,7 @@ app.get('/getDoing', async function(request, response) {
 
 app.post('/cardDone', async function(request, response) {
   //TODO
+  console.log(request)
   trello.markCardDone("4AbE76vv")
   response.json({done: false})
 })
