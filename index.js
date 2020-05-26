@@ -1,7 +1,5 @@
 var envvar = require('envvar');
 var bodyParser = require('body-parser');
-var trelloKey = envvar.string('trellokey')
-var trelloSecret = envvar.string('trellotoken')
 var express = require('express');
 var port = process.env.PORT || 5000
 
