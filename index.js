@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({
   extended: false
 }));
 app.get('/', function(request, response) {
-  console.log("get")
+  console.log("/")
+  response.json({main: "main"})
 })
 console.log("hey")
-// the issue is its not connected to the right github account! none of the changes I've been making have taken effect.
