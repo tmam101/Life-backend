@@ -1,4 +1,5 @@
 var envvar = require('envvar');
+var network = require('./network.js')
 var trelloKey = envvar.string('trellokey')
 var trelloToken = envvar.string('trellotoken')
 var doingListID = "5e388f5d25b5df537d00585c"
