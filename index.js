@@ -26,5 +26,5 @@ app.get('/getDoing', async function(request, response) {
   response.json(cards)
 })
 
-//TODO: Handle timeouts
+//TODO: Handle timeouts? Or do they not happen with express?
 //TODO: Tests
