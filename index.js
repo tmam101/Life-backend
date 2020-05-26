@@ -18,6 +18,7 @@ app.use(bodyParser.urlencoded({
 //MARK: ENDPOINTS
 app.get('/', async function(request, response) {
   console.log("/")
+  await trello.markCardDone("4AbE76vv")
   response.json({started: "true"})
 })
 
@@ -28,6 +29,7 @@ app.get('/getDoing', async function(request, response) {
 
 app.post('/cardDone', async function(request, response) {
   //TODO
+  trello.markCardDone("4AbE76vv")
   response.json({done: false})
 })
 

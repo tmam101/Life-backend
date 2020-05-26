@@ -40,5 +40,22 @@ async function post(url, json) {
   })
 }
 
+async function put(url, json) {
+  return new Promise((resolve, reject) => {
+    console.log("post url: " + url)
+    request.put(url, json, (error, res, body) => {
+      if (error) {
+        console.log("POST url with error: " + url)
+        console.error(error)
+        reject(error)
+        return
+      }
+      console.log(`statusCode: ${res.statusCode}`)
+      console.log(body)
+      resolve({statusCode: res.statusCode, body: body})
+    })
+  })
+}
+
 exports.get = get;
 exports.post = post;

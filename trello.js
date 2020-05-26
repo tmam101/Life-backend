@@ -5,7 +5,10 @@ var network = require('./network.js')
 var trelloKey = envvar.string('trellokey')
 var trelloToken = envvar.string('trellotoken')
 var doingListID = "5e388f5d25b5df537d00585c"
-var doingCardsURL = "https://api.trello.com/1/lists/"+doingListID+"/cards?fields=name&key="+trelloKey+"&token="+trelloToken
+var doneListID = "5e388f5daa59850ac464ed62"
+var baseTrelloURL = "https://api.trello.com/1/"
+var keyAndToken = "key="+trelloKey+"&token="+trelloToken
+var doingCardsURL = baseTrelloURL + "lists/"+doingListID+"/cards?fields=name&" + keyAndToken
 var cardsDoneToday = 0 // TODO
 
 //MARK: FUNCTIONS
@@ -14,11 +17,14 @@ async function getCardsFromDoing() {
   return response
 }
 
-async function markCardDone() {
+async function markCardDone(id) {
   // TODO
-  cardsDoneToday += 1
-  return null
+  let putURL = baseTrelloURL + "cards/" + id + "?idList=" + doneListID + keyAndToken
+  let r = await network.put(putURL)
+  // cardsDoneToday += 1
+  console.log(r)
 }
 
 //MARK: EXPORTS
 exports.getCardsFromDoing = getCardsFromDoing;
+exports.markCardDone = markCardDone;
