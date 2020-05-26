@@ -5,6 +5,9 @@ var trelloSecret = envvar.string('trellotoken')
 var express = require('express');
 
 var app = express();
+var server = app.listen(5000, function() {
+  console.log('server listening on port 5000');
+});
 app.use(bodyParser.urlencoded({
   extended: false
 }));
