@@ -59,3 +59,4 @@ async function put(url, json) {
 
 exports.get = get;
 exports.post = post;
+exports.put = put;
