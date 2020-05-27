@@ -26,5 +26,13 @@ app.get('/getDoing', async function(request, response) {
   response.json(cards)
 })
 
-//TODO: Handle timeouts? Or do they not happen with express?
+app.get('/cardDone', async function(request, response) {
+  // console.log(request)
+  var id = request.query.id
+  console.log("Card id to mark done: " + id)
+  var result = await trello.markCardDone(id)
+  response.json({done: result})
+})
+
+//TODO: Handle timeouts
 //TODO: Tests
