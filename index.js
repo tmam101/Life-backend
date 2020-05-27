@@ -67,6 +67,10 @@ app.get('/db', async function(request, response) {
     response.json({count: await resetCount()})
   })
 
+  app.get('/updateCount', async function(request, response) {
+    response.json({count: await updateCount()})
+  })
+
   async function getCount() {
     const data = await query('SELECT * FROM test_table')
     return data.rows[0].count
@@ -80,6 +84,11 @@ app.get('/db', async function(request, response) {
   async function incrementCount() {
     await query('UPDATE test_table SET count = count + 1')
     return await getCount()
+  }
+
+  async function updateCount() {
+    var cards = await trello.getCardsFromDoing()
+    return cards.length
   }
 
   async function query(string) {
