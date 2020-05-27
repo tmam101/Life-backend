@@ -47,6 +47,8 @@ app.get('/db', async function(request, response) {
       // const result = await client.query('SELECT * FROM test_table');
       // await client.query('CREATE TABLE IF NOT EXISTS test_table (count INT)');
       // await client.query('INSERT INTO test_table VALUES (1)')
+      await client.query('DELETE FROM test_table WHERE count=1')
+      await client.query('INSERT INTO test_table VALUES (1)')
       const result = await client.query('SELECT * FROM test_table');
       const results = { 'results': (result) ? result.rows : null};
       console.log(result.rows[0].count)
