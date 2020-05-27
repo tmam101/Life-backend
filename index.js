@@ -66,6 +66,11 @@ app.get('/db', async function(request, response) {
     response.json({count: count})
   })
 
+  app.get('/incrementCount', async function(request, response) {
+    await incrementCount()
+    response.json({incremented: true})
+  })
+
   async function getCount() {
     const client = await pool.connect();
     const data = await client.query('SELECT * FROM test_table');
@@ -77,7 +82,7 @@ app.get('/db', async function(request, response) {
 
   async function incrementCount() {
     const client = await pool.connect();
-    await client.query('UPDATE test_table SET count = count + 1')
+    await client.query('UPDATE test_table SET count = ' + 3)
     client.release();
   }
 
