@@ -72,11 +72,13 @@ app.get('/db', async function(request, response) {
   })
 
   async function getCount() {
-    const client = await pool.connect();
-    const data = await client.query('SELECT * FROM test_table');
+    // const client = await pool.connect();
+    // const data = await client.query('SELECT * FROM test_table');
     // const results = { 'results': (data) ? data.rows : null};
+    // var count = data.rows[0].count
+    const data = await query('SELECT * FROM test_table')
     var count = data.rows[0].count
-    client.release();
+    // client.release();
     return count
   }
 
@@ -84,6 +86,13 @@ app.get('/db', async function(request, response) {
     const client = await pool.connect();
     await client.query('UPDATE test_table SET count = ' + 3)
     client.release();
+  }
+
+  async function query(string) {
+    const client = await pool.connect();
+    let result = await client.query(string);
+    client.release();
+    return result
   }
 
 //TODO: Handle timeouts
