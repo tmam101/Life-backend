@@ -26,7 +26,7 @@ app.get('/getDoing', async function(request, response) {
   response.json(cards)
 })
 
-app.post('/cardDone', async function(request, response) {
+app.get('/cardDone', async function(request, response) {
   console.log(request)
   var id = request.query.id
   console.log(id)
