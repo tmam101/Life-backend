@@ -44,15 +44,9 @@ app.get('/cardDone', async function(request, response) {
 app.get('/db', async function(request, response) {
     try {
       const client = await pool.connect();
-      // const result = await client.query('SELECT * FROM test_table');
-      // await client.query('CREATE TABLE IF NOT EXISTS test_table (count INT)');
-      // await client.query('INSERT INTO test_table VALUES (1)')
-      // await client.query('DELETE FROM test_table WHERE count=1')
-      // await client.query('INSERT INTO test_table VALUES (1)')
       const result = await client.query('SELECT * FROM test_table');
       const results = { 'results': (result) ? result.rows : null};
       console.log(result.rows[0].count)
-      // res.render('pages/db', results );
       response.json(results)
       client.release();
     } catch (err) {
@@ -62,17 +56,14 @@ app.get('/db', async function(request, response) {
   })
 
   app.get('/count', async function(request, response) {
-    let count = await getCount()
-    response.json({count: count})
+    response.json({count: await getCount()})
   })
 
   app.get('/incrementCount', async function(request, response) {
-    const count = await incrementCount()
-    response.json({count: count})
+    response.json({count: await incrementCount()})
   })
 
   app.get('/resetCount', async function(request, response) {
-    // const count = await resetCount()
     response.json({count: await resetCount()})
   })
 
@@ -103,5 +94,10 @@ app.get('/db', async function(request, response) {
   // const data = await client.query('SELECT * FROM test_table');
   // const results = { 'results': (data) ? data.rows : null};
   // var count = data.rows[0].count
+  // const result = await client.query('SELECT * FROM test_table');
+  // await client.query('CREATE TABLE IF NOT EXISTS test_table (count INT)');
+  // await client.query('INSERT INTO test_table VALUES (1)')
+  // await client.query('DELETE FROM test_table WHERE count=1')
+  // await client.query('INSERT INTO test_table VALUES (1)')
 //TODO: Handle timeouts
 //TODO: Tests
