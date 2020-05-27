@@ -74,7 +74,7 @@ app.get('/db', async function(request, response) {
     return count
   }
 
-  function incrementCount() {
+  async function incrementCount() {
     const client = await pool.connect();
     await client.query('UPDATE test_table SET count = count + 1')
   }
