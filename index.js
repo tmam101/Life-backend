@@ -98,8 +98,8 @@ app.get('/db', async function(request, response) {
     // await client.query('UPDATE test_table SET count = count + 1') // You can set it to vars
     // client.release();
     await query('UPDATE test_table SET count = count + 1')
-    const count = await getCount() // can you return await getCount?
-    return count
+    return await getCount() // can you return await getCount?
+    // return count
   }
 
   async function query(string) {
