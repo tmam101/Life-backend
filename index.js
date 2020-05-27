@@ -67,6 +67,7 @@ app.get('/db', async function(request, response) {
   })
 
   async function getCount() {
+    const client = await pool.connect();
     const data = await client.query('SELECT * FROM test_table');
     // const results = { 'results': (data) ? data.rows : null};
     var count = data.rows[0].count
@@ -77,6 +78,7 @@ app.get('/db', async function(request, response) {
   async function incrementCount() {
     const client = await pool.connect();
     await client.query('UPDATE test_table SET count = count + 1')
+    client.release();
   }
 
 //TODO: Handle timeouts
