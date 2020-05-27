@@ -45,7 +45,8 @@ app.get('/db', async function(req, res) {
     try {
       const client = await pool.connect();
       // const result = await client.query('SELECT * FROM test_table');
-      const table = await client.query('CREATE TABLE test_table (count INT)');
+      await client.query('CREATE TABLE IF NOT EXISTS test_table (count INT)');
+      await client.query('INSERT INTO test_table VALUES(1)')
       const result = await client.query('SELECT * FROM test_table');
       const results = { 'results': (result) ? result.rows : null};
       res.render('pages/db', results );
