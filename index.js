@@ -49,6 +49,7 @@ app.get('/db', async function(request, response) {
       // await client.query('INSERT INTO test_table VALUES (1)')
       const result = await client.query('SELECT * FROM test_table');
       const results = { 'results': (result) ? result.rows : null};
+      console.log(response.rows[0].count)
       // res.render('pages/db', results );
       response.json(results)
       client.release();
