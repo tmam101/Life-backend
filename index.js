@@ -69,7 +69,7 @@ app.get('/db', async function(request, response) {
 
   app.get('/updateCount', async function(request, response) {
     response.json({count: await updateCount()})
-  })
+  }) // TODO update this every day
 
   async function getCount() {
     const data = await query('SELECT * FROM test_table')
