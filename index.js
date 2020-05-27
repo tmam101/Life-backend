@@ -41,7 +41,7 @@ app.get('/cardDone', async function(request, response) {
   response.json({done: result})
 })
 
-app.get('/db', async function(req, res) => {
+app.get('/db', async function(req, res) {
     try {
       const client = await pool.connect();
       const result = await client.query('SELECT * FROM test_table');
