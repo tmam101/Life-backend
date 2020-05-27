@@ -49,7 +49,8 @@ app.get('/db', async function(req, res) {
       await client.query('INSERT INTO test_table VALUES (1)')
       const result = await client.query('SELECT * FROM test_table');
       const results = { 'results': (result) ? result.rows : null};
-      res.render('pages/db', results );
+      // res.render('pages/db', results );
+      console.log(results)
       client.release();
     } catch (err) {
       console.error(err);
