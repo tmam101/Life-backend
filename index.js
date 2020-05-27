@@ -89,7 +89,7 @@ app.get('/db', async function(request, response) {
 
   async function resetCount() {
     await query('UPDATE test_table SET count = 0')
-    const count = await getCount // can you return await getCount?
+    const count = await getCount() // can you return await getCount?
     return count
   }
 
@@ -98,7 +98,7 @@ app.get('/db', async function(request, response) {
     // await client.query('UPDATE test_table SET count = count + 1') // You can set it to vars
     // client.release();
     await query('UPDATE test_table SET count = count + 1')
-    const count = await getCount // can you return await getCount?
+    const count = await getCount() // can you return await getCount?
     return count
   }
 
