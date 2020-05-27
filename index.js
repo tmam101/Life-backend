@@ -57,7 +57,7 @@ app.get('/db', async function(request, response) {
       client.release();
     } catch (err) {
       console.error(err);
-      res.send("Error " + err);
+      response.json({error: "error /db"})
     }
   })
 
