@@ -72,34 +72,23 @@ app.get('/db', async function(request, response) {
   })
 
   app.get('/resetCount', async function(request, response) {
-    const count = await resetCount()
-    response.json({count: count})
+    // const count = await resetCount()
+    response.json({count: await resetCount()})
   })
 
   async function getCount() {
-    // const client = await pool.connect();
-    // const data = await client.query('SELECT * FROM test_table');
-    // const results = { 'results': (data) ? data.rows : null};
-    // var count = data.rows[0].count
     const data = await query('SELECT * FROM test_table')
-    // var count = data.rows[0].count
-    // client.release();
     return data.rows[0].count
   }
 
   async function resetCount() {
     await query('UPDATE test_table SET count = 0')
-    const count = await getCount() // can you return await getCount?
-    return count
+    return await getCount()
   }
 
   async function incrementCount() {
-    // const client = await pool.connect();
-    // await client.query('UPDATE test_table SET count = count + 1') // You can set it to vars
-    // client.release();
     await query('UPDATE test_table SET count = count + 1')
-    return await getCount() // can you return await getCount?
-    // return count
+    return await getCount()
   }
 
   async function query(string) {
@@ -109,5 +98,10 @@ app.get('/db', async function(request, response) {
     return result
   }
 
+  //SAMPLE QUERIES
+  // const client = await pool.connect();
+  // const data = await client.query('SELECT * FROM test_table');
+  // const results = { 'results': (data) ? data.rows : null};
+  // var count = data.rows[0].count
 //TODO: Handle timeouts
 //TODO: Tests
