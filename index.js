@@ -59,6 +59,10 @@ app.get('/updateTodo', async function(request, response) {
   response.json({done: await updateTodo()})
 }) // TODO update this every day
 
+app.get('/incrementTodo' , async function(request, response) {
+  response.json({done: await incrementTodo()})
+})
+
 //MARK: GET
 async function getDone() {
   const data = await query('SELECT * FROM stats')
@@ -82,6 +86,11 @@ async function incrementDone() {
 
 async function setTodo(num) {
   await query ('UPDATE stats SET todo = ' + num)
+}
+
+async function incrementTodo() {
+  await query ('UPDATE stats SET todo = todo + 1')
+  return await getDoneAndTodo()
 }
 
 //MARK: RESET
