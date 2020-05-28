@@ -44,9 +44,9 @@ app.get('/cardDone', async function(request, response) {
 app.get('/db', async function(request, response) {
     try {
       const client = await pool.connect();
-      const result = await client.query('SELECT * FROM test_table');
+      const result = await client.query('SELECT * FROM stats');
       const results = { 'results': (result) ? result.rows : null};
-      console.log(result.rows[0].count)
+      console.log(result.rows[0].done)
       response.json(results)
       client.release();
     } catch (err) {
@@ -55,38 +55,44 @@ app.get('/db', async function(request, response) {
     }
   })
 
-  app.get('/count', async function(request, response) {
-    response.json({count: await getCount()})
+  app.get('/done', async function(request, response) {
+    response.json({done: await getDone()})
   })
 
-  app.get('/incrementCount', async function(request, response) {
-    response.json({count: await incrementCount()})
+  app.get('/incrementDone', async function(request, response) {
+    response.json({done: await incrementDone()})
   })
 
-  app.get('/resetCount', async function(request, response) {
-    response.json({count: await resetCount()})
+  app.get('/resetDone', async function(request, response) {
+    response.json({done: await resetDone()})
   })
 
-  app.get('/updateCount', async function(request, response) {
-    response.json({count: await updateCount()})
+  app.get('/updateDone', async function(request, response) {
+    response.json({done: await updateDone()})
   }) // TODO update this every day
 
-  async function getCount() {
-    const data = await query('SELECT * FROM test_table')
-    return data.rows[0].count
+  app.get('/setup', async function(request, response) {
+    await query('DROP TABLE test_table')
+    await query('CREATE TABLE stats (done int, todo int)')
+    await query('INSERT INTO stats (0, 0)')
+  }) // TODO update this every day
+
+  async function getDone() {
+    const data = await query('SELECT * FROM stats')
+    return data.rows[0].done
   }
 
-  async function resetCount() {
-    await query('UPDATE test_table SET count = 0')
-    return await getCount()
+  async function resetDone() {
+    await query('UPDATE stats SET done = 0')
+    return await getDone()
   }
 
-  async function incrementCount() {
-    await query('UPDATE test_table SET count = count + 1')
-    return await getCount()
+  async function incrementDone() {
+    await query('UPDATE stats SET done = done + 1')
+    return await getDone()
   }
 
-  async function updateCount() {
+  async function updateDone() {
     var cards = await trello.getCardsFromDoing()
     return cards.length
   }
@@ -100,13 +106,13 @@ app.get('/db', async function(request, response) {
 
   //SAMPLE QUERIES
   // const client = await pool.connect();
-  // const data = await client.query('SELECT * FROM test_table');
+  // const data = await client.query('SELECT * FROM stats');
   // const results = { 'results': (data) ? data.rows : null};
   // var count = data.rows[0].count
-  // const result = await client.query('SELECT * FROM test_table');
-  // await client.query('CREATE TABLE IF NOT EXISTS test_table (count INT)');
-  // await client.query('INSERT INTO test_table VALUES (1)')
-  // await client.query('DELETE FROM test_table WHERE count=1')
-  // await client.query('INSERT INTO test_table VALUES (1)')
+  // const result = await client.query('SELECT * FROM stats');
+  // await client.query('CREATE TABLE IF NOT EXISTS stats (count INT)');
+  // await client.query('INSERT INTO stats VALUES (1)')
+  // await client.query('DELETE FROM stats WHERE count=1')
+  // await client.query('INSERT INTO stats VALUES (1)')
 //TODO: Handle timeouts
 //TODO: Tests
