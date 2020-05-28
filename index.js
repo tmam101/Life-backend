@@ -72,9 +72,9 @@ app.get('/db', async function(request, response) {
   }) // TODO update this every day
 
   app.get('/setup', async function(request, response) {
-    await query('DROP TABLE test_table')
-    await query('CREATE TABLE stats (done int, todo int)')
-    await query('INSERT INTO stats (0, 0)')
+    // await query('DROP TABLE test_table')
+    await query('CREATE TABLE IF NOT EXISTS stats (done int, todo int)')
+    // await query('INSERT INTO stats (0, 0)')
     response.json({done: await getDone()})
   }) // TODO update this every day
 
