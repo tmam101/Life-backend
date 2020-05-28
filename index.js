@@ -63,6 +63,10 @@ app.get('/incrementTodo' , async function(request, response) {
   response.json({done: await incrementTodo()})
 })
 
+app.get('/decrementTodo' , async function(request, response) {
+  response.json({done: await decrementTodo()})
+})
+
 //MARK: GET
 async function getDone() {
   const data = await query('SELECT * FROM stats')
@@ -90,6 +94,11 @@ async function setTodo(num) {
 
 async function incrementTodo() {
   await query ('UPDATE stats SET todo = todo + 1')
+  return await getDoneAndTodo()
+}
+
+async function decrementTodo() {
+  await query ('UPDATE stats SET todo = todo - 1')
   return await getDoneAndTodo()
 }
 
