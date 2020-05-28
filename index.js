@@ -75,11 +75,17 @@ app.get('/db', async function(request, response) {
     await query('DROP TABLE test_table')
     await query('CREATE TABLE stats (done int, todo int)')
     await query('INSERT INTO stats (0, 0)')
+    response.json({done: await getDone()})
   }) // TODO update this every day
 
   async function getDone() {
     const data = await query('SELECT * FROM stats')
     return data.rows[0].done
+  }
+
+  async function getTodo() {
+    const data = await query('SELECT * FROM stats')
+    return data.rows[0].todo
   }
 
   async function resetDone() {
