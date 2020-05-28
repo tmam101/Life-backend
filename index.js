@@ -60,11 +60,11 @@ app.get('/updateTodo', async function(request, response) {
 }) // TODO update this every day
 
 app.get('/incrementTodo' , async function(request, response) {
-  response.json({done: await incrementTodo()})
+  response.json(await incrementTodo())
 })
 
 app.get('/decrementTodo' , async function(request, response) {
-  response.json({done: await decrementTodo()})
+  response.json(await decrementTodo())
 })
 
 //MARK: GET
