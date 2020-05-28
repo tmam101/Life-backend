@@ -25,7 +25,7 @@ app.use(bodyParser.urlencoded({
 //MARK: ENDPOINTS
 app.get('/', async function(request, response) {
   console.log("/")
-  response.json({started: "true"})
+  response.json({started: "true", cards: await trello.getCardsFromDoing(), stats: await getDoneAndTodo()})
 })
 
 app.get('/getDoing', async function(request, response) {
@@ -71,13 +71,6 @@ app.get('/db', async function(request, response) {
     response.json({done: await updateDone()})
   }) // TODO update this every day
 
-  app.get('/setup', async function(request, response) {
-    // await query('DROP TABLE test_table')
-    await query('CREATE TABLE IF NOT EXISTS stats (done int, todo int)')
-    await query('INSERT INTO stats VALUES (0, 0)')
-    response.json({done: await getDone(), todo: await getTodo()})
-  }) // TODO update this every day
-
   async function getDone() {
     const data = await query('SELECT * FROM stats')
     return data.rows[0].done
@@ -101,6 +94,10 @@ app.get('/db', async function(request, response) {
   async function updateDone() {
     var cards = await trello.getCardsFromDoing()
     return cards.length
+  }
+
+  async function getDoneAndTodo() {
+    return {done: await getDone(), todo: await getTodo()}
   }
 
   async function query(string) {
