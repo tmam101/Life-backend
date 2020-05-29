@@ -67,6 +67,10 @@ app.get('/decrementTodo', async function(request, response) {
   response.json(await decrementTodo())
 })
 
+app.get('/rose', async function(request, response) {
+  response.json({hey: "Rose <3"})
+})
+
 //MARK: GET
 async function getDone() {
   const data = await query('SELECT * FROM stats')
