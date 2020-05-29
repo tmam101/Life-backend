@@ -57,13 +57,13 @@ app.get('/resetDone', async function(request, response) {
 
 app.get('/updateTodo', async function(request, response) {
   response.json({done: await updateTodo()})
-}) // TODO update this every day
+})
 
-app.get('/incrementTodo' , async function(request, response) {
+app.get('/incrementTodo', async function(request, response) {
   response.json(await incrementTodo())
 })
 
-app.get('/decrementTodo' , async function(request, response) {
+app.get('/decrementTodo', async function(request, response) {
   response.json(await decrementTodo())
 })
 
