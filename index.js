@@ -64,3 +64,7 @@ app.get('/decrementTodo', async function(request, response) {
 app.get('/rose', async function(request, response) {
   response.json({hey: "Rose <3"})
 })
+
+app.get('/maleek', async function(request, response) {
+  response.json({maleek: "your white wife is here"})
+})

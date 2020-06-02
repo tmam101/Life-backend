@@ -30,6 +30,11 @@ async function markCardDone(id) {
   return false
 }
 
+async function getChecklistsOnCard(id) {
+
+}
+
 //MARK: EXPORTS
 exports.getCardsFromDoing = getCardsFromDoing;
 exports.markCardDone = markCardDone;
+exports.getChecklistsOnCard = getChecklistsOnCard;
