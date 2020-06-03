@@ -28,7 +28,16 @@ async function markCardDone(id) {
 }
 
 async function getChecklistsOnCard(id) {
-
+  let url = baseTrelloURL + "cards/" + id + "/checklists?" + keyAndToken
+  let response = await network.get(url)
+  if (response.statusCode = 200) {
+    console.log("Success fetching checklists on card " + id)
+    console.log(response)
+    return true
+  } else {
+    console.log(failure)
+    return false
+  }
 }
 
 //MARK: EXPORTS
