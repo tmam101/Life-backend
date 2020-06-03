@@ -32,8 +32,9 @@ async function getChecklistsOnCard(id) {
   let response = await network.get(url)
   if (response.statusCode = 200) {
     console.log("Success fetching checklists on card " + id)
-    console.log(response)
+    // console.log(response)
     for (element in response) {
+      console.log(pos)
       delete element.pos
     }
     return response
