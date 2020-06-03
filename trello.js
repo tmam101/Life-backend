@@ -33,10 +33,10 @@ async function getChecklistsOnCard(id) {
   if (response.statusCode = 200) {
     console.log("Success fetching checklists on card " + id)
     console.log(response)
-    return true
+    return response
   } else {
     console.log(failure)
-    return false
+    return response
   }
 }
 
