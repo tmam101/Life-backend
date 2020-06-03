@@ -9,7 +9,6 @@ var doneListID = "5e388f5daa59850ac464ed62"
 var baseTrelloURL = "https://api.trello.com/1/"
 var keyAndToken = "key="+trelloKey+"&token="+trelloToken
 var doingCardsURL = baseTrelloURL + "lists/"+doingListID+"/cards?fields=name&" + keyAndToken
-var cardsDoneToday = 0 // TODO
 
 //MARK: FUNCTIONS
 async function getCardsFromDoing() {
@@ -22,14 +21,17 @@ async function markCardDone(id) {
   let response = await network.put(putURL)
   if (response.statusCode = 200) {
     console.log("Card " + id + " marked done successfully")
-    cardsDoneToday += 1
-    console.log("Cards done today: " + cardsDoneToday)
     return true
   }
   console.log("Card " + id + " failed to mark done")
   return false
 }
 
+async function getChecklistsOnCard(id) {
+
+}
+
 //MARK: EXPORTS
 exports.getCardsFromDoing = getCardsFromDoing;
 exports.markCardDone = markCardDone;
+exports.getChecklistsOnCard = getChecklistsOnCard;
