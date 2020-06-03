@@ -68,3 +68,8 @@ app.get('/rose', async function(request, response) {
 app.get('/maleek', async function(request, response) {
   response.json({maleek: "your white wife is here"})
 })
+
+app.get('checklists', async function(request, response) {
+  let id = request.query.id
+  response.json(await trello.getChecklistsOnCard(id))
+})
