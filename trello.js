@@ -15,7 +15,7 @@ async function getCardsFromDoing() {
   var response = await network.get(doingCardsURL)
   return response
 }
-
+// todo include checklist data as part of the initial getCardsFromDoing call
 async function markCardDone(id) {
   let putURL = baseTrelloURL + "cards/" + id + "?idList=" + doneListID + "&" + keyAndToken
   let response = await network.put(putURL)
@@ -42,7 +42,7 @@ async function getChecklistsOnCard(id) {
         item = response[i].checkItems[j]
         delete item.idMember
         delete item.nameData
-        delete item.pos
+        delete item.pos //todo is pos useful for position? order of items?
         delete item.due
       }
     }

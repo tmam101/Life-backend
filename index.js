@@ -25,6 +25,9 @@ app.get('/', async function(request, response) {
 
 app.get('/getDoing', async function(request, response) {
   var cards = await trello.getCardsFromDoing()
+  for (var i = 0; i < cards.length; i++) {
+    cards[i].checklists = await trello.getChecklistsOnCard(cards[i].id)
+  }
   response.json(cards)
 })
 
