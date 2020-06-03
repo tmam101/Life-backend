@@ -34,7 +34,7 @@ async function getChecklistsOnCard(id) {
     console.log("Success fetching checklists on card " + id)
     // console.log(response)
     for (element in response) {
-      console.log(pos)
+      console.log(element)
       delete element.pos
     }
     return response
