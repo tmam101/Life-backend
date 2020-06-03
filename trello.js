@@ -34,10 +34,17 @@ async function getChecklistsOnCard(id) {
     console.log("Success fetching checklists on card " + id)
     // console.log(response)
     for (var i = 0; i < response.length; i++) {
-      console.log(response[i])
-      console.log(response[i].pos)
       delete response[i].pos
-      // delete element.pos
+      delete response[i].idCard
+      delete response[i].idBoard
+      delete response[i].id
+      for (var j = 0; j < response[i].checkItems.length; j++) {
+        item = response[i].checkItems[j]
+        delete item.idMember
+        delete item.nameData
+        delete item.pos
+        delete item.due
+      }
     }
     return response
   } else {
