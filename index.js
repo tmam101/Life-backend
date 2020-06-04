@@ -29,7 +29,7 @@ app.get('/getDoing', async function(request, response) {
     cards[i].checklists = await trello.getChecklistsOnCard(cards[i].id)
   }
   response.json(cards)
-})
+}) //todo null checklists
 
 app.get('/cardDone', async function(request, response) {
   // console.log(request)
