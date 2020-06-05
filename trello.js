@@ -63,3 +63,4 @@ async function markCheckItemState(cardId, checkItemId, state) {
 exports.getCardsFromDoing = getCardsFromDoing;
 exports.markCardDone = markCardDone;
 exports.getChecklistsOnCard = getChecklistsOnCard;
+exports.markCheckItemState = markCheckItemState;
