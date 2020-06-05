@@ -81,5 +81,10 @@ app.get('/checkItemState', async function(request, response) {
   let cardId = request.query.cardId
   let checkItemId = request.query.checkItemId
   var state = request.query.state
-  response.json(await trello.markCheckItemState(cardId, checkItemId, state))
+  let status = await trello.markCheckItemState(cardId, checkItemId, state)
+  if (status.statusCode == 200) {
+    response.json({done: true})
+  } else {
+    response.json({done: false})
+  }
 })
