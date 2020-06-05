@@ -81,6 +81,5 @@ app.get('/checkItemState', async function(request, response) {
   let cardId = request.query.cardId
   let checkItemId = request.query.checkItemId
   var state = request.query.state
-  state = state == "incomplete" ? "complete" : "incomplete"
   response.json(await trello.markCheckItemState(cardId, checkItemId, state))
 })
