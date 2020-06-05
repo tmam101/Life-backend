@@ -53,6 +53,12 @@ async function getChecklistsOnCard(id) {
   }
 }
 
+async function markCheckItemState(cardId, checkItemId, state) {
+  let url = baseTrelloURL + "cards/" + cardId + "checkItem/" + checkItemId + "?state=" + state + "&" + keyAndToken
+  let response = await network.put(url)
+  return response
+}
+
 //MARK: EXPORTS
 exports.getCardsFromDoing = getCardsFromDoing;
 exports.markCardDone = markCardDone;
