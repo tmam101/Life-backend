@@ -31,6 +31,10 @@ async function incrementDone() {
   return await getDoneAndTodo()
 }
 
+async function decrementDone() {
+  await query ('UPDATE stats SET done = done - 1')
+}
+
 async function setTodo(num) {
   await query ('UPDATE stats SET todo = ' + num)
 }
@@ -94,6 +98,7 @@ exports.getDone = getDone;
 exports.getTodo = getTodo;
 exports.getDoneAndTodo = getDoneAndTodo;
 exports.incrementDone = incrementDone;
+exports.decrementDone = decrementDone;
 exports.setTodo = setTodo;
 exports.incrementTodo = incrementTodo;
 exports.decrementTodo = decrementTodo;

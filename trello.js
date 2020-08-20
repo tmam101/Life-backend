@@ -27,6 +27,17 @@ async function markCardDone(id) {
   return false
 }
 
+async function markCardDoing(id) {
+  let putURL = baseTrelloURL + "cards/" + id + "?idList=" + doingListID + "&" + keyAndToken
+  let response = await network.put(putURL)
+  if (response.statusCode = 200) {
+    console.log("Card " + id + " marked done successfully")
+    return true
+  }
+  console.log("Card " + id + " failed to mark done")
+  return false
+}
+
 async function getChecklistsOnCard(id) {
   let url = baseTrelloURL + "cards/" + id + "/checklists?" + keyAndToken
   let response = await network.get(url)
@@ -63,5 +74,6 @@ async function markCheckItemState(cardId, checkItemId, state) {
 //MARK: EXPORTS
 exports.getCardsFromDoing = getCardsFromDoing;
 exports.markCardDone = markCardDone;
+exports.markCardDoing = markCardDoing;
 exports.getChecklistsOnCard = getChecklistsOnCard;
 exports.markCheckItemState = markCheckItemState;
