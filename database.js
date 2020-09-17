@@ -11,54 +11,55 @@ const pool = new Pool({
 //MARK: FUNCTIONS
 
 //MARK: GET
-async function getDone() {
+async function getTodoToday() {
   const data = await query('SELECT * FROM stats')
-  return data.rows[0].done
-}
-
-async function getTodo() {
-  const data = await query('SELECT * FROM stats')
-  return data.rows[0].todo
-}
-
-async function getDoneAndTodo() {
-  return {done: await getDone(), todo: await getTodo()}
+  return data.rows[0].todoToday
 }
 
 //MARK: SET
-async function incrementDone() {
-  await query('UPDATE stats SET done = done + 1')
-  return await getDoneAndTodo()
+async function setTodoToday(num) {
+  await query ('UPDATE stats SET todoToday = ' + num)
 }
 
-async function decrementDone() {
-  await query ('UPDATE stats SET done = done - 1')
-}
+// async function getTodoRemaining() {
+//   const data = await query('SELECT * FROM stats')
+//   return data.rows[0].todo
+// }
 
-async function setTodo(num) {
-  await query ('UPDATE stats SET todo = ' + num)
-}
+// async function getTodos() {
+//   return {done: await getTodoToday(), todo: await getTodoRemaining()}
+// }
 
-async function incrementTodo() {
-  await query ('UPDATE stats SET todo = todo + 1')
-  return await getDoneAndTodo()
-}
-
-async function decrementTodo() {
-  await query ('UPDATE stats SET todo = todo - 1')
-  return await getDoneAndTodo()
-}
+//MARK: SET
+// async function incrementDone() {
+//   await query('UPDATE stats SET done = done + 1')
+//   return await getDoneAndTodo()
+// }
+//
+// async function decrementDone() {
+//   await query ('UPDATE stats SET done = done - 1')
+// }
+//
+// async function incrementTodoRemaining() {
+//   await query ('UPDATE stats SET todo = todo + 1')
+//   return await getDoneAndTodo()
+// }
+//
+// async function decrementTodoRemaining() {
+//   await query ('UPDATE stats SET todo = todo - 1')
+//   return await getDoneAndTodo()
+// }
 
 //MARK: RESET
-async function resetDone() {
-  await query('UPDATE stats SET done = 0')
-  return await getDoneAndTodo()
-}
+// async function resetDone() {
+//   await query('UPDATE stats SET done = 0')
+//   return await getDoneAndTodo()
+// }
 
-async function updateTodo() {
-  var cards = await trello.getCardsFromDoing()
-  await setTodo(cards.length)
-}
+// async function updateTodoRemaining() {
+//   var cards = await trello.getCardsFromDoing()
+//   await setTodo(cards.length)
+// }
 
 //MARK: UTILITY
 async function query(string) {
@@ -94,14 +95,16 @@ async function query(string) {
 //   }
 // })
 
-exports.getDone = getDone;
-exports.getTodo = getTodo;
-exports.getDoneAndTodo = getDoneAndTodo;
-exports.incrementDone = incrementDone;
-exports.decrementDone = decrementDone;
-exports.setTodo = setTodo;
-exports.incrementTodo = incrementTodo;
-exports.decrementTodo = decrementTodo;
-exports.resetDone = resetDone;
-exports.updateTodo = updateTodo;
+// exports.getDone = getDone;
+// exports.getTodo = getTodo;
+// exports.getDoneAndTodo = getDoneAndTodo;
+// exports.incrementDone = incrementDone;
+// exports.decrementDone = decrementDone;
+// exports.setTodo = setTodo;
+// exports.incrementTodo = incrementTodo;
+// exports.decrementTodo = decrementTodo;
+// exports.resetDone = resetDone;
+// exports.updateTodo = updateTodo;
 exports.query = query;
+exports.getTodoToday = getTodoToday;
+exports.setTodoToday = setTodoToday;

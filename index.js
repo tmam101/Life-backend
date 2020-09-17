@@ -49,36 +49,36 @@ app.get('/cardDoing', async function(request, response) {
 })
 
 app.get('/getStats', async function(request, response) {
-  response.json(await database.getDoneAndTodo())
+  // const doing = await trello.getCardsFromDoing()
+  // const doingLength = doing.length
+  // const todoToday = await database.getTodoToday()
+  // response.json(await database.getDoneAndTodo())
+  response.json({todoRemaining: await trello.getCardsFromDoing().length, todoTotal: await database.getTodoToday()})
 })
 
-app.get('/incrementDone', async function(request, response) {
-  response.json({done: await database.incrementDone()})
+// app.get('/incrementDone', async function(request, response) {
+//   response.json({done: await database.incrementDone()})
+// })
+
+// app.get('/resetDone', async function(request, response) {
+//   response.json({done: await database.resetDone()})
+// })
+
+// app.get('/updateTodoRemaining', async function(request, response) {
+//   response.json({done: await database.updateTodo()})
+// })
+
+app.get('/setTodoToday', async function(request, response) {
+  await database.setTodoToday(await trello.getCardsFromDoing().length)
 })
 
-app.get('/resetDone', async function(request, response) {
-  response.json({done: await database.resetDone()})
-})
-
-app.get('/updateTodo', async function(request, response) {
-  response.json({done: await database.updateTodo()})
-})
-
-app.get('/incrementTodo', async function(request, response) {
-  response.json(await database.incrementTodo())
-})
-
-app.get('/decrementTodo', async function(request, response) {
-  response.json(await database.decrementTodo())
-})
-
-app.get('/rose', async function(request, response) {
-  response.json({hey: "Rose <3"})
-})
-
-app.get('/maleek', async function(request, response) {
-  response.json({maleek: "your white wife is here"})
-})
+// app.get('/incrementTodo', async function(request, response) {
+//   response.json(await database.incrementTodo())
+// })
+//
+// app.get('/decrementTodo', async function(request, response) {
+//   response.json(await database.decrementTodo())
+// })
 
 app.get('/checklists', async function(request, response) {
   let id = request.query.id
