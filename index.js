@@ -69,7 +69,8 @@ app.get('/getStats', async function(request, response) {
 // })
 
 app.get('/setTodoToday', async function(request, response) {
-  await database.setTodoToday(await trello.getCardsFromDoing().length)
+  var cards = await trello.getCardsFromDoing()
+  await database.setTodoToday(cards.length)
 })
 
 // app.get('/incrementTodo', async function(request, response) {
