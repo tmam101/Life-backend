@@ -49,11 +49,13 @@ app.get('/cardDoing', async function(request, response) {
 })
 
 app.get('/getStats', async function(request, response) {
-  // const doing = await trello.getCardsFromDoing()
-  // const doingLength = doing.length
-  // const todoToday = await database.getTodoToday()
+  const doing = await trello.getCardsFromDoing()
+  const doingLength = doing.length
+  const todoToday = await database.getTodoToday()
+  console.log("doing: " + doingLength)
+  console.log("todotoday: " + todoToday)
   // response.json(await database.getDoneAndTodo())
-  response.json({todoRemaining: await trello.getCardsFromDoing().length, todoTotal: await database.getTodoToday()})
+  response.json({todoRemaining: doingLength, todoTotal: todoToday})
 })
 
 // app.get('/incrementDone', async function(request, response) {
