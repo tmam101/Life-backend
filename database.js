@@ -12,7 +12,7 @@ const pool = new Pool({
 
 //MARK: GET
 async function getTodoToday() {
-  // const data = await query('SELECT * FROM stats')
+  const data = await query('SELECT * FROM stats')
   // "CREATE TABLE IF NOT EXISTS todoToday"
   return data.rows[0].todoToday
 }
