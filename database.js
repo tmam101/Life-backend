@@ -18,6 +18,7 @@ async function getTodoToday() {
 
 //MARK: SET
 async function setTodoToday(num) {
+  console.log("num " num)
   await query("ALTER TABLE stats ADD todoToday INT")
   await query ('UPDATE stats SET todoToday = ' + num)
 }
