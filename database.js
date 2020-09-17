@@ -13,7 +13,7 @@ const pool = new Pool({
 //MARK: GET
 async function getTodoToday() {
   // const data = await query('SELECT * FROM stats')
-  "CREATE TABLE IF NOT EXISTS todoToday"
+  // "CREATE TABLE IF NOT EXISTS todoToday"
   return data.rows[0].todoToday
 }
 
@@ -21,10 +21,10 @@ async function getTodoToday() {
 async function setTodoToday(num) {
   console.log("num " + num)
   // await query("ALTER TABLE stats ADD todoToday INT")
-  // await query ('UPDATE stats SET todoToday = ' + num)
-  await query("DROP TABLE stats")
-  await query("CREATE TABLE stats (todoToday int)")
-  await query("INSERT INTO stats VALUES (" + num + ")")
+  await query ('UPDATE stats SET todoToday = ' + num)
+  // await query("DROP TABLE stats")
+  // await query("CREATE TABLE stats (todoToday int)")
+  // await query("INSERT INTO stats VALUES (" + num + ")")
   return true
 }
 
