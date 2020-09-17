@@ -36,7 +36,7 @@ app.get('/cardDone', async function(request, response) {
   var id = request.query.id
   console.log("Card id to mark done: " +   id)
   var result = await trello.markCardDone(id)
-  await database.incrementDone()
+  // await database.incrementDone()
   response.json({done: result})
 })
 
@@ -44,7 +44,7 @@ app.get('/cardDoing', async function(request, response) {
   var id = request.query.id
   console.log("Card id to mark doing: " + id)
   var result = await trello.markCardDoing(id)
-  await database.decrementDone()
+  // await database.decrementDone()
   response.json({done: result})
 })
 
