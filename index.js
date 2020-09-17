@@ -72,6 +72,7 @@ app.get('/setTodoToday', async function(request, response) {
   var cards = await trello.getCardsFromDoing()
   await database.setTodoToday(cards.length)
   let todo = await database.getTodoToday()
+  console.log("Todo: " + todo)
   response.json({todoToday: todo})
 })
 
