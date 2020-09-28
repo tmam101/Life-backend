@@ -78,6 +78,11 @@ app.get('/setTodoToday', async function(request, response) {
   response.json({todoToday: todo})
 })
 
+app.get('/incrementTodoToday', async function(request, response) {
+  var r = await database.incrementTodoToday();
+  response.json({done: r})
+})
+
 // app.get('/incrementTodo', async function(request, response) {
 //   response.json(await database.incrementTodo())
 // })

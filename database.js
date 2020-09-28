@@ -29,6 +29,11 @@ async function setTodoToday(num) {
   return true
 }
 
+async function incrementTodoToday() {
+  await query('UPDATE stats SET todoToday = todoToday + 1')
+  return true
+}
+
 // async function getTodoRemaining() {
 //   const data = await query('SELECT * FROM stats')
 //   return data.rows[0].todo
@@ -116,3 +121,4 @@ async function query(string) {
 exports.query = query;
 exports.getTodoToday = getTodoToday;
 exports.setTodoToday = setTodoToday;
+exports.incrementTodoToday = incrementTodoToday;
