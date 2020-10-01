@@ -27,6 +27,17 @@ async function markCardDone(id) {
   return false
 }
 
+async function updateCard(id, description) {
+  let putURL = baseTrelloURL + "cards/" + id + "?desc=" + description + "&" + keyAndToken
+  let response = await network.put(putURL)
+  if (response.statusCode = 200) {
+    console.log("Card " + id + " description changed successfully")
+    return true
+  }
+  console.log("Card " + id + " description failed to change")
+  return false
+}
+
 async function markCardDoing(id) {
   let putURL = baseTrelloURL + "cards/" + id + "?idList=" + doingListID + "&" + keyAndToken
   let response = await network.put(putURL)
@@ -77,3 +88,4 @@ exports.markCardDone = markCardDone;
 exports.markCardDoing = markCardDoing;
 exports.getChecklistsOnCard = getChecklistsOnCard;
 exports.markCheckItemState = markCheckItemState;
+exports.updateCard = updateCard;

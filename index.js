@@ -48,6 +48,13 @@ app.get('/cardDoing', async function(request, response) {
   response.json({done: result})
 })
 
+app.get('/updateCard', async function(request, response) {
+  var id = request.query.id
+  var description = request.query.description
+  var result = await trello.updateCard(id, description)
+  response.json({done: result})
+})
+
 app.get('/getStats', async function(request, response) {
   const doing = await trello.getCardsFromDoing()
   const doingLength = doing.length
