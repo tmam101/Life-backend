@@ -8,7 +8,7 @@ var doingListID = "5e388f5d25b5df537d00585c"
 var doneListID = "5e388f5daa59850ac464ed62"
 var baseTrelloURL = "https://api.trello.com/1/"
 var keyAndToken = "key="+trelloKey+"&token="+trelloToken
-var doingCardsURL = baseTrelloURL + "lists/"+doingListID+"/cards?fields=name&" + keyAndToken
+var doingCardsURL = baseTrelloURL + "lists/"+doingListID+"/cards?fields=name,desc&" + keyAndToken
 
 //MARK: FUNCTIONS
 async function getCardsFromDoing() {
