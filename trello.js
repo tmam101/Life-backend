@@ -82,6 +82,13 @@ async function markCheckItemState(cardId, checkItemId, state) {
   return response
 }
 
+async function createCard(name, desc) {
+  let url = baseTrelloURL + "cards?name=" + name + "&desc=" + desc + "&idList=" + doingListID + "&" + keyAndToken
+  console.log(url)
+  let response = await network.post(url)
+  return response
+}
+
 //MARK: EXPORTS
 exports.getCardsFromDoing = getCardsFromDoing;
 exports.markCardDone = markCardDone;
@@ -89,3 +96,4 @@ exports.markCardDoing = markCardDoing;
 exports.getChecklistsOnCard = getChecklistsOnCard;
 exports.markCheckItemState = markCheckItemState;
 exports.updateCard = updateCard;
+exports.createCard = createCard;

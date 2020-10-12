@@ -65,6 +65,13 @@ app.get('/getStats', async function(request, response) {
   response.json({todoRemaining: doingLength, todoTotal: todoToday})
 })
 
+app.get('/createCard', async function(request, response) {
+  var name = request.query.name
+  var desc = request.query.desc
+  var result = await trello.createCard(name, desc)
+  response.json({done: result})
+})
+
 // app.get('/incrementDone', async function(request, response) {
 //   response.json({done: await database.incrementDone()})
 // })
